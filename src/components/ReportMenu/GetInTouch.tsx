@@ -13,15 +13,15 @@ export function GetInTouch() {
     },
 
     validate: (values) => ({
-      name: (0 == values.name.length ? 'Érvénytelen adat': null),
-      phoneNumber: (values.phoneNumber === undefined ? 'Age is required' : values.phoneNumber == 0 ? 'Érvénytelen adat' : null),
-      subject: (0 == values.subject.length ? 'Érvénytelen adat': null),
-      description: (0 == values.description.length ? 'Érvénytelen adat': null)
+      name: (0 == values.name.length ? 'Invalid format': null),
+      phoneNumber: (values.phoneNumber === undefined ? 'Invalid format' : values.phoneNumber == 0 ? 'Invalid format' : null),
+      subject: (0 == values.subject.length ? 'Invalid format': null),
+      description: (0 == values.description.length ? 'Invalid format': null)
     })
   });
 
   return (
-    <Paper radius="lg">
+    <Paper radius="lg" style={{display: 'flex', justifyContent: 'center', height: '100vh', alignItems: 'center'}}>
       <div className={classes.wrapper}>
         <div className={classes.contacts}>
           <Text fz="lg" fw={700} ta="center" className={classes.title} c="#fff">
@@ -47,7 +47,7 @@ export function GetInTouch() {
             <Textarea
               {...form.getInputProps('description')}
               mt="md"
-              label="Your message"
+              label="Description"
               placeholder="Please include all relevant information"
               minRows={3}
             />
