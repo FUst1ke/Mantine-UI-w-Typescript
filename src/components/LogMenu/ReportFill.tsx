@@ -2,6 +2,7 @@ import { Paper, Text, TextInput, Textarea, Button, Group, SimpleGrid, NumberInpu
 import { ContactIconsList } from './ContactIcons'; // ContactIconList.tsx
 import classes from './ReportFill.module.css'; // css
 import { useForm } from '@mantine/form';
+// Report menü
 import { CardProps } from '../ReportsMenu/ReportCard';
 import { useState } from 'react';
 import ReportList from '../ReportsMenu/ReportList';
@@ -36,6 +37,7 @@ export function GetInTouch() {
   return (
     <>
     {/* report fill */}
+    {/* {1 > 0 ? cumó : null} */}
     <Paper radius="lg" style={{display: 'flex', justifyContent: 'center', height: '100vh', alignItems: 'center'}}>
       <div className={classes.wrapper}>
         <div className={classes.contacts}>
