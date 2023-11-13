@@ -1,9 +1,14 @@
 import { Paper, Text, TextInput, Textarea, Button, Group, SimpleGrid, NumberInput } from '@mantine/core'; // iconok hívása
 import { ContactIconsList } from './ContactIcons'; // ContactIconList.tsx
-import classes from './GetInTouch.module.css'; // css
+import classes from './ReportFill.module.css'; // css
 import { useForm } from '@mantine/form';
+import { CardProps } from '../ReportsMenu/ReportCard';
+import { useState } from 'react';
+import ReportList from '../ReportsMenu/ReportList';
 
 export function GetInTouch() {
+  const [cards, setCards] = useState<CardProps[]>([])
+
   const form = useForm({
     initialValues: {
       name: '',
@@ -20,7 +25,17 @@ export function GetInTouch() {
     })
   });
 
+  //[] TÖMB
+  //{} OBJECT
+
+  const submitData = (value: CardProps) => {
+    // fetch luára az adott value, mentsd le adatbázisba
+    setCards([...cards, value])
+  }
+
   return (
+    <>
+    {/* report fill */}
     <Paper radius="lg" style={{display: 'flex', justifyContent: 'center', height: '100vh', alignItems: 'center'}}>
       <div className={classes.wrapper}>
         <div className={classes.contacts}>
@@ -30,8 +45,8 @@ export function GetInTouch() {
 
           <ContactIconsList />
         </div>
-
-        <form className={classes.form} onSubmit={form.onSubmit((values) => console.log("VALUES", values))}>
+        
+        <form className={classes.form} onSubmit={form.onSubmit((values) => submitData(values))}>
           <Text fz="lg" fw={700} className={classes.title}>
             Get in touch
           </Text>
@@ -61,5 +76,8 @@ export function GetInTouch() {
         </form>
       </div>
     </Paper>
+    {/* report menü */}
+    <ReportList cards={cards}/>
+    </>
   );
 }

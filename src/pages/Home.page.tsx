@@ -1,4 +1,4 @@
-import { GetInTouch } from "../components/ReportMenu/GetInTouch";
+import { GetInTouch } from "../components/LogMenu/ReportFill";
 
 export function HomePage() {
   return (

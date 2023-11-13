@@ -33,8 +33,8 @@ const MOCKDATA = [ // ide szúrjuk be az adatokat amiket meg szeretnénk hívni
 ];
 
 export function ContactIconsList() { // ez pedig egy array functionnal kigenerálja, ezek szerint a map ezt csinálja
-  // A ContactIconProps-ba jönnek az itemek, azért lesz ...item
-  // a key pedig azonosítő hogy melyikről van szó?
-  const items = MOCKDATA.map((item, index) => <ContactIcon key={index} {...item} />);
+  const items = MOCKDATA.map((item, index) =>  // item: { title: 'Email', description: 'hello@mantine.dev', icon: At }
+  <ContactIcon key={index} {...item} /> // key: 1,2,3 stb..
+  );
   return <Stack>{items}</Stack>;
 }
