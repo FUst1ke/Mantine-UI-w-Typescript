@@ -1,27 +1,27 @@
-import { Text, Progress } from '@mantine/core';
-import classes from '../LogMenu/GetInTouch.module.css'
+import { Accordion } from '@mantine/core';
+import classes from '../LogMenu/ReportFill.module.css'
 
 export interface CardProps {
     name: string,
     phoneNumber: undefined,
     subject: string,
-    description: string
+    description: string,
+    image?: string
 }
 
 const ReportCard: React.FC<{ item: CardProps }> = ({ item }) => {
     return (
-        <div className={classes.wrapper}>
-            <Text fz="xs" tt="uppercase" fw={700} c="dimmed">
-            {item.name}
-            {item.description}
-            {item.phoneNumber}
-            {item.subject}
-            </Text>
-            <Text fz="lg" fw={500}>
-            $5.431 / $10.000
-            </Text>
-            <Progress value={54.31} mt="md" size="lg" radius="xl" />
-        </div>
+        <Accordion.Item className={classes.item} value={item.subject}>
+        {/* // value alapján nyitja az itemeket, ha kettő ugyan olyan value-n fut akkor mindkettőt megnyitja. */}
+          <Accordion.Control>data label</Accordion.Control>
+          <Accordion.Panel>
+            name: {item.name} <br />
+            description: {item.description} <br />
+            phoneNumber: {item.phoneNumber} <br />
+            subject: {item.subject} <br />
+            attached image: <img src={item.image} alt="" />
+          </Accordion.Panel>
+        </Accordion.Item>
     )
 }
 

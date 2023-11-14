@@ -2,12 +2,16 @@ import { Paper, Text, TextInput, Textarea, Button, Group, SimpleGrid, NumberInpu
 import { ContactIconsList } from './ContactIcons'; // ContactIconList.tsx
 import classes from './ReportFill.module.css'; // css
 import { useForm } from '@mantine/form';
+import { useMantineColorScheme } from '@mantine/core';
+
 // Report menü
 import { CardProps } from '../ReportsMenu/ReportCard';
 import { useState } from 'react';
 import ReportList from '../ReportsMenu/ReportList';
 
 export function GetInTouch() {
+  const { setColorScheme } = useMantineColorScheme(); 
+  setColorScheme('dark'); 
   const [cards, setCards] = useState<CardProps[]>([])
 
   const form = useForm({
@@ -15,14 +19,16 @@ export function GetInTouch() {
       name: '',
       phoneNumber: undefined,
       subject: '',
-      description: ''
+      description: '',
+      image: ''
     },
 
     validate: (values) => ({
       name: (0 == values.name.length ? 'Invalid format': null),
       phoneNumber: (values.phoneNumber === undefined ? 'Invalid format' : values.phoneNumber == 0 ? 'Invalid format' : null),
       subject: (0 == values.subject.length ? 'Invalid format': null),
-      description: (0 == values.description.length ? 'Invalid format': null)
+      description: (0 == values.description.length ? 'Invalid format': null),
+      // image: (0 == values.name.length ? 'Invalid format': null) // nem szükséges, ha van van ha nincs nincs
     })
   });
 
@@ -60,6 +66,8 @@ export function GetInTouch() {
             </SimpleGrid>
 
             <TextInput {...form.getInputProps('subject')} mt="md" label="Subject" placeholder="Subject" />
+            <TextInput {...form.getInputProps('image')} mt="md" label="Image" placeholder="Image" />
+
 
             <Textarea
               {...form.getInputProps('description')}
