@@ -1,0 +1,22 @@
+:root {
+  background-image: url("https://i.imgur.com/iPTAdYV.png");
+  background-size: 'cover';
+  background-repeat: 'no-repeat';
+  background-position: 'center';
+  color-scheme: only light !important;
+}
+
+.m-1b7284a3 {
+  background: none;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+  background: none !important;
+  /* overflow: hidden !important; */
+  user-select: none;
+}
+  

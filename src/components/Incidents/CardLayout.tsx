@@ -15,7 +15,7 @@ export interface CardProps {
 const date = moment().format("YYYY-MM-DD HH:mm");
 const ReportCard: React.FC<{ item: CardProps }> = ({ item }) => {
   return (
-    <Accordion.Item value={item.subject}>
+    <Accordion.Item value={item.subject} className={classes.item}>
       <Accordion.Control>
         <Group wrap="nowrap">
           <Avatar src={item.image} radius="xl" size="lg" />
