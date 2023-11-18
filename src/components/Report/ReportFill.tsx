@@ -3,6 +3,7 @@ import { useForm } from '@mantine/form';
 import { ContactIconsList } from './ContactIcons';
 import classes from './ReportFill.module.css';
 import { Upload, Power } from 'tabler-icons-react';
+import { notifications } from '@mantine/notifications';
 
 // Report menü
 import { CardProps } from '../Incidents/CardLayout';
@@ -37,6 +38,10 @@ export function ReportFill() {
   const submitData = (value: CardProps) => {
     // fetch luára az adott value, mentsd le adatbázisba
     setCards([...cards, value])
+    notifications.show({
+      title: "Hello",
+      message: "Whaccsu doing"
+    })
   }
 
   return (
