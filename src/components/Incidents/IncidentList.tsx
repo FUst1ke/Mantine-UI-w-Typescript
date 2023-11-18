@@ -1,7 +1,7 @@
 import { Container, Title, Accordion } from '@mantine/core';
-import { CardProps } from './ReportCard';
-import classes from './ReportList.module.css'
-import ReportCard from './ReportCard';
+import { CardProps } from './CardLayout';
+import classes from '../Report/ReportFill.module.css';
+import ReportCard from './CardLayout';
 
 const ReportList: React.FC<{ cards: CardProps[] }> = ({ cards }) => {
   return (

@@ -5,11 +5,11 @@ import { useForm } from '@mantine/form';
 import { useMantineColorScheme } from '@mantine/core';
 
 // Report menü
-import { CardProps } from '../ReportsMenu/ReportCard';
+import { CardProps } from '../Incidents/CardLayout';
 import { useState } from 'react';
-import ReportList from '../ReportsMenu/ReportList';
+import ReportList from '../Incidents/IncidentList';
 
-export function GetInTouch() {
+export function ReportFill() {
   const { setColorScheme } = useMantineColorScheme(); 
   setColorScheme('dark'); 
   const [cards, setCards] = useState<CardProps[]>([])

@@ -1,5 +1,6 @@
 import { Accordion } from '@mantine/core';
-import classes from '../LogMenu/ReportFill.module.css'
+// import classes from '../LogMenu/ReportFill.module.css'
+import classes from '../Report/ReportFill.module.css'
 
 export interface CardProps {
     name: string,

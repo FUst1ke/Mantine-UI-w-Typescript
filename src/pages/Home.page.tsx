@@ -1,7 +1,7 @@
-import { GetInTouch } from "../components/LogMenu/ReportFill";
+import { ReportFill } from "../components/Report/ReportFill";
 
 export function HomePage() {
   return (
-    <GetInTouch />
+    <ReportFill />
   );
 }
