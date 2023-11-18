@@ -1,29 +1,41 @@
-import { Accordion } from '@mantine/core';
-// import classes from '../LogMenu/ReportFill.module.css'
-import classes from '../Report/ReportFill.module.css'
+// import { Container, Title, Accordion } from '@mantine/core';
+import { Group, Avatar, Text, Accordion, Button, Space } from '@mantine/core';
+import { Trash } from 'tabler-icons-react'
+import classes from './IncidentList.module.css';
+import moment from "moment";
 
 export interface CardProps {
-    name: string,
-    phoneNumber: undefined,
-    subject: string,
-    description: string,
-    image?: string
+  name: string,
+  phoneNumber: undefined,
+  subject: string,
+  description: string,
+  image?: string
 }
 
+const date = moment().format("YYYY-MM-DD HH:mm");
 const ReportCard: React.FC<{ item: CardProps }> = ({ item }) => {
-    return (
-        <Accordion.Item className={classes.item} value={item.subject}>
-        {/* // value alapján nyitja az itemeket, ha kettő ugyan olyan value-n fut akkor mindkettőt megnyitja. */}
-          <Accordion.Control>data label</Accordion.Control>
-          <Accordion.Panel>
-            name: {item.name} <br />
-            description: {item.description} <br />
-            phoneNumber: {item.phoneNumber} <br />
-            subject: {item.subject} <br />
-            attached image: <img src={item.image} alt="" />
-          </Accordion.Panel>
-        </Accordion.Item>
-    )
+  return (
+    <Accordion.Item value={item.subject}>
+      <Accordion.Control>
+        <Group wrap="nowrap">
+          <Avatar src={item.image} radius="xl" size="lg" />
+          <div>
+            <Text>{item.subject}</Text>
+            <Text size="sm" c="dimmed" fw={400}>
+              {item.name} - {date}
+            </Text>
+          </div>
+        </Group>
+      </Accordion.Control>
+      <Accordion.Panel>
+        <Text size="sm">{item.description}</Text>
+        <Group justify="flex-end" mt="md">
+          <Button className={classes.delete} rightSection={<Trash size={14} />} color="red">Delete</Button>
+        </Group>
+      </Accordion.Panel>
+    </Accordion.Item>
+  )
 }
 
 export default ReportCard
+

@@ -1,9 +1,9 @@
 import { Text, Box, Stack, rem } from '@mantine/core';
-import { Sun, Phone, MapPin, At } from 'tabler-icons-react';
+import { MapPin, IdBadge, GridPattern } from 'tabler-icons-react';
 import classes from './ContactIcons.module.css';
 
 interface ContactIconProps extends Omit<React.ComponentPropsWithoutRef<'div'>, 'title'> { // erre még nem sikerült rájönni micsoda -- Hoppá, abstract class akar ez lenni
-  icon: typeof Sun;
+  icon: typeof MapPin;
   title: React.ReactNode;
   description: React.ReactNode;
 }
@@ -26,10 +26,9 @@ function ContactIcon({ icon: Icon, title, description, ...others }: ContactIconP
 }
 
 const MOCKDATA = [ // ide szúrjuk be az adatokat amiket meg szeretnénk hívni
-  { title: 'Email', description: 'hello@mantine.dev', icon: At },
-  { title: 'Phone', description: '+49 (800) 335 35 35', icon: Phone },
-  { title: 'Address', description: '844 Morris Park avenue', icon: MapPin },
-  { title: 'Working hours', description: '8 a.m. – 11 p.m.', icon: Sun },
+  { title: 'Officer\'s Name', description: 'John Doe', icon: IdBadge },
+  { title: 'Officer\'s Grade', description: 'Litenuant', icon: GridPattern },
+  { title: 'Current Location', description: 'LS, Mission Row', icon: MapPin}, // GetStreetNameAtCoord, GetStreetNameFromHashKey
 ];
 
 export function ContactIconsList() { // ez pedig egy array functionnal kigenerálja, ezek szerint a map ezt csinálja

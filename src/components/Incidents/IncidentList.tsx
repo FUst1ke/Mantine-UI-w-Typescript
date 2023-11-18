@@ -5,16 +5,15 @@ import ReportCard from './CardLayout';
 
 const ReportList: React.FC<{ cards: CardProps[] }> = ({ cards }) => {
   return (
-    <Container size="lg" className={classes.wrapper}>
+    <Container size="sm">
       <Title ta="center" className={classes.title}>
        Data list
       </Title>
-
-      <Accordion variant="separated">
+      <Accordion chevronPosition="right" variant="contained">
         {cards.map((props, index) => {
           return <ReportCard key={index} item={props}/>
         })}
-      </Accordion>        
+      </Accordion>
     </Container>
   );
 }

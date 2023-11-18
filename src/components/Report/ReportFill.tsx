@@ -1,8 +1,8 @@
-import { Paper, Text, TextInput, Textarea, Button, Group, SimpleGrid, NumberInput } from '@mantine/core'; // iconok hívása
-import { ContactIconsList } from './ContactIcons'; // ContactIconList.tsx
-import classes from './ReportFill.module.css'; // css
+import { Paper, Text, TextInput, Textarea, Button, Group, SimpleGrid, NumberInput, useMantineColorScheme, Fieldset, Space, Image } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { useMantineColorScheme } from '@mantine/core';
+import { ContactIconsList } from './ContactIcons';
+import classes from './ReportFill.module.css';
+import { Upload, Power } from 'tabler-icons-react';
 
 // Report menü
 import { CardProps } from '../Incidents/CardLayout';
@@ -28,7 +28,6 @@ export function ReportFill() {
       phoneNumber: (values.phoneNumber === undefined ? 'Invalid format' : values.phoneNumber == 0 ? 'Invalid format' : null),
       subject: (0 == values.subject.length ? 'Invalid format': null),
       description: (0 == values.description.length ? 'Invalid format': null),
-      // image: (0 == values.name.length ? 'Invalid format': null) // nem szükséges, ha van van ha nincs nincs
     })
   });
 
@@ -46,40 +45,55 @@ export function ReportFill() {
     {/* {1 > 0 ? cumó : null} */}
     <Paper radius="lg" style={{display: 'flex', justifyContent: 'center', height: '100vh', alignItems: 'center'}}>
       <div className={classes.wrapper}>
-        <div className={classes.contacts}>
+        <div className={classes.sidebar}>
           <Text fz="lg" fw={700} ta="center" className={classes.title} c="#fff">
-            Contact information
+            Welcome back, Officer!
           </Text>
-
-          <ContactIconsList />
+          <Group justify="center" mt="md">
+            <Image
+              radius="md"
+              h={200}
+              w="auto"
+              fit="contain"
+              src="https://wiki.argonathrpg.eu/images//2/21/Lossantos_seal.png"
+            />
+          </Group>
+          <Space h="4vmin"/>
+          <ContactIconsList/>
         </div>
         
         <form className={classes.form} onSubmit={form.onSubmit((values) => submitData(values))}>
-          <Text fz="lg" fw={700} className={classes.title}>
-            Get in touch
+          <Text size="xl" fw={700} className={classes.title}>
+            Create a new report
           </Text>
 
           <div className={classes.fields}>
-            <SimpleGrid cols={{ base: 1, sm: 2 }}>
-              <TextInput {...form.getInputProps('name')} label="Your name" placeholder="Your name"/>
-              <NumberInput {...form.getInputProps('phoneNumber')} label="Your phone number" hideControls placeholder="Your phone number" />
-            </SimpleGrid>
-
-            <TextInput {...form.getInputProps('subject')} mt="md" label="Subject" placeholder="Subject" />
-            <TextInput {...form.getInputProps('image')} mt="md" label="Image" placeholder="Image" />
-
-
-            <Textarea
-              {...form.getInputProps('description')}
-              mt="md"
-              label="Description"
-              placeholder="Please include all relevant information"
-              minRows={3}
-            />
-
+            <Fieldset legend="Citizen's informations">
+              <SimpleGrid cols={{ base: 1, sm: 2 }}>
+                <TextInput {...form.getInputProps('name')} label="Name" placeholder="Citizen's name"/>
+                <NumberInput {...form.getInputProps('phoneNumber')} label="Phone number" hideControls placeholder="Citizen's phone number" />
+              </SimpleGrid>
+            </Fieldset>
+            <Space h="xs" />
+            <Fieldset legend="Incident informations">
+              <TextInput {...form.getInputProps('subject')} mt="md" label="Subject" placeholder="Subject" />
+              <Textarea
+                {...form.getInputProps('description')}
+                mt="md"
+                label="Description"
+                placeholder="Please include all relevant information"
+                autosize
+                minRows={2}
+                maxRows={4}
+              />
+            </Fieldset>
+            <TextInput {...form.getInputProps('image')} mt="md" label="Image (optional)" placeholder="Image" />
             <Group justify="flex-end" mt="md">
-              <Button type="submit" className={classes.control}>
-                Send message
+              <Button type="submit" className={classes.control} rightSection={<Upload size={18}/>}>
+                Send Report
+              </Button>
+              <Button color="red" className={classes.control} rightSection={<Power size={18}/>}>
+                Log Out
               </Button>
             </Group>
           </div>
